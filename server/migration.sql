@@ -5,6 +5,6 @@ CREATE TABLE ToDoList (
   item TEXT
 );
 
-INSERT INTO ToDoList (item) VALUES ('Finish React MVP');
-INSERT INTO ToDoList (item) VALUES ('Schedule Meeting with Team');
-INSERT INTO ToDoList (item) VALUES ('Review Code Changes');
+INSERT INTO ToDoList (item) VALUES ('Finish Laundry');
+INSERT INTO ToDoList (item) VALUES ('Schedule Meeting');
+INSERT INTO ToDoList (item) VALUES ('Grocery shopping');

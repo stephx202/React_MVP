@@ -4,20 +4,22 @@ body {
 
 .main {
   padding: 8px;
+  outline: black;
+  outline: 2px;
 }
 
-.task {
+.item {
   display: flex;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid red;
   padding: 2px;
   max-width: 200px;
 }
 
-.task + .task {
+/* .item + .item {
   margin-top: 4px;
 }
 
-.task > * + * {
+.item > * + * {
   margin-left: 4px;
-}
+} */

@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import Items from './Items.jsx';
 
-const App = () => {
-  const [items, setItems] = useState([]);
+// const App = () => {
+//   const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/ToDoList");
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status} ${response.statusText}`);
-        }
+//   useEffect(() => {
+//     fetch("/api/ToDoList")
+//       .then((res) => res.json())
+//       .then((items) => {
+//         setItems(items);
+//       });
+//   }, []);
 
-        const data = await response.json();
-        setItems(data);
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return (
-    <main>
-      {items.map((items) => (
-        <p className="item" key={items.id}>
-          {items.item}
-        </p>
-      ))}
-    </main>
-  );
-};
+//   return (
+//     <main>
+//       {items.map((items) => (
+//         <p className="item" key={items.id}>
+//           {items.item}
+//         </p>
+//       ))}
+//     </main>
+//   );
+// };
+function App(){
+  return(
+    <div className='items'>
+      <Items/>
+    </div>
+  )
+}
 
 export default App;
