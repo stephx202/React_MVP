@@ -1,12 +1,10 @@
-DROP TABLE IF EXISTS tasks;
+DROP TABLE IF EXISTS ToDoList;
 
-CREATE TABLE tasks (
-  id SERIAL,
-  description TEXT
+CREATE TABLE ToDoList (
+  id SERIAL PRIMARY KEY,
+  item TEXT
 );
 
-INSERT INTO tasks(description) VALUES('Do the dishes');
-INSERT INTO tasks(description) VALUES('Walk the dog');
-INSERT INTO tasks(description) VALUES('Sweep the floor');
-INSERT INTO tasks(description) VALUES('Do your homework');
-INSERT INTO tasks(description) VALUES('Beat Elden Ring');
+INSERT INTO ToDoList (item) VALUES ('Finish React MVP');
+INSERT INTO ToDoList (item) VALUES ('Schedule Meeting with Team');
+INSERT INTO ToDoList (item) VALUES ('Review Code Changes');

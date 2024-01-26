@@ -1,27 +1,40 @@
 import express from "express";
-import pg from "pg";
-import dotenv from "dotenv";
+const app = express();
+import pkg from "pg";
+const { Pool } = pkg;
 
-dotenv.config({ path: "../.env" });
+// dotenv.config(); //IF BEING ADDED, NEED TO ADD BACK TO THE VITE.CONFIG.JS
+// const { PORT, DATABASE_URL } = process.env;
 
-const { PORT, DATABASE_URL } = process.env;
-
-const client = new pg.Client({
-  connectionString: DATABASE_URL,
+const pool = new Pool({
+    host: "localhost",
+    port: 5432,
+    database: "ToDoList",
+    user: "stephx202",
+    password: '2024'
 });
 
-await client.connect();
-
-const app = express();
-
 app.use(express.json());
-
-app.get("/api/tasks", (req, res) => {
-  client.query("SELECT * FROM tasks").then((result) => {
+//ANOTHER WAY TO MAKE A GET REQUEST
+//need to add /api/ToDoList to view on postman
+// app.get("/api/ToDoList", async (req, res) => {
+//   try {
+//   const result = await pool.query("SELECT * FROM ToDoList")
+//   res.status(200).send(result.rows);
+//     } catch (error) {
+//       console.error("Error executing query:", error);
+//       res.status(500).send("Internal Server Error");
+//     }
+// });
+//THIS WORKS
+app.get("/api/ToDoList", (req, res) => {
+  pool.query("SELECT * FROM ToDoList").then((result) => {
     res.send(result.rows);
+
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+
+app.listen(8000, () => {
+  console.log(`Listening on port 8000`);
 });
