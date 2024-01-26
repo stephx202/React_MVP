@@ -3,22 +3,20 @@ import React, {useState, useEffect} from 'react';
 
 
 const Items = () => {
-    const [items, setItems] = useState([]);
+    const [item, setItem] = useState([]);
   
     useEffect(() => {
       fetch("/api/ToDoList")
         .then((res) => res.json())
-        .then((items) => {
-          setItems(items);
+        .then((item) => {
+          setItem(item);
         });
     }, []);
   
     return (
       <main>
-        {items.map((items) => (
-          <p className="item" key={items.id}>
-            {items.item}
-          </p>
+        {item.map((item) => (
+          <p className="item" key={item.id} onClick={()=>alert(`click${item.id}`)}> {item.item}</p>
         ))}
       </main>
     );
