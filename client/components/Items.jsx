@@ -30,14 +30,13 @@ const Items = () => {
   return (
     <main>
     {items.map((item) => (
-      <div key={item.id} className={`item ${item.crossedOff ? 'crossed-off' : ''}`}>
-        {item.item}
-        <div className="icons">
-          <RiCloseCircleLine />
-          <IoMdCheckmarkCircleOutline />
-          
+        <div key={item.id} className={`item ${item.crossedOff ? 'crossed-off' : ''}`} onClick={() => completedItem(item.id)}>
+          {item.item}
+          <div className="icons">
+            <RiCloseCircleLine />
+            <IoMdCheckmarkCircleOutline />
+          </div>
         </div>
-      </div>
     ))}
   </main>
   );
