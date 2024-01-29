@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { RiCloseCircleLine} from "react-icons/ri";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 const Items = () => {
   const [items, setItems] = useState([]);
@@ -16,8 +18,8 @@ const Items = () => {
       });
   }, []);
 
-  const handleItemClick = (itemId) => {
-    // Toggle the crossedOff when an item is clicked
+  const completedItem = (itemId) => {
+    // Toggle the crossedOff property when an item is clicked
     setItems((prevItems) =>
       prevItems.map((item) =>
         item.id === itemId ? { ...item, crossedOff: !item.crossedOff } : item
@@ -27,16 +29,17 @@ const Items = () => {
 
   return (
     <main>
-      {items.map((item) => (
-        <p
-          className={`item ${item.crossedOff ? 'crossed-off' : ''}`}
-          key={item.id}
-          onClick={() => handleItemClick(item.id)}
-        >
-          {item.item}
-        </p>
-      ))}
-    </main>
+    {items.map((item) => (
+      <div key={item.id} className={`item ${item.crossedOff ? 'crossed-off' : ''}`}>
+        {item.item}
+        <div className="icons">
+          <RiCloseCircleLine />
+          <IoMdCheckmarkCircleOutline />
+          
+        </div>
+      </div>
+    ))}
+  </main>
   );
 };
 
