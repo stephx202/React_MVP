@@ -50,6 +50,20 @@ app.delete("/api/ToDoList/:id",(req, res)=>{
 })
 
 
+//POST REQUEST  
+app.post("/api/ToDoList", (req, res) => {
+  const {item} = req.body;
+  pool.query("INSERT INTO ToDoList (item) VALUES ($1) RETURNING *", [item])
+  .then((result) => {
+    res.status(201).json(result.rows[0]);
+  })
+  .catch((error) => {
+    console.error(error);
+    res.status(500).send("Error adding new item to list");
+  })
+})
+
+
 app.listen(8000, () => {
   console.log(`Listening on port 8000`);
 });
