@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Title from './Title.jsx';
 import Items from './Items.jsx';
+import Form from "./Form.jsx";
 // const App = () => {
 //   const [items, setItems] = useState([]);
 
@@ -23,11 +24,22 @@ import Items from './Items.jsx';
 //   );
 // };
 function App(){
+  const[items, setItems]= useState([])
+
+
+  const handleNewItem = (newItem) => {
+    setItems((prevItems) => [
+      ...prevItems,
+      newItem
+    ]);
+  };
+  
   return(
     <>
       <Title/>
       <div className='item'>
-        <Items/>
+        <Form onAddItem={handleNewItem}/>
+        <Items key={items}/>
       </div>
     </>
   )
