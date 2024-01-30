@@ -4,7 +4,7 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 const Items = () => {
   const [items, setItems] = useState([]);
-
+//GET DATA
   useEffect(() => {
     fetch("/api/ToDoList")
       .then((res) => res.json())
@@ -27,14 +27,31 @@ const Items = () => {
     );
   };
 
+  //DELETE DATA
+  const deleteItem=(itemId)=>{
+    fetch(`/api/ToDoList/${itemId}`,{
+      method:'DELETE',
+    })
+    .then((res)=>{
+      if (res.ok) {
+        setItems((prevItems) => prevItems((item) => item.id !== itemId));
+        console.log(`Successfully deleted item with ID ${itemId}`);
+      } else {
+        console.error(`Failed to delete item with ID ${itemId}`);
+      }
+    })
+  }
+
+
+
   return (
     <main>
     {items.map((item) => (
-        <div key={item.id} className={`item ${item.crossedOff ? 'crossed-off' : ''}`} onClick={() => completedItem(item.id)}>
+        <div key={item.id} className={`item ${item.crossedOff ? 'crossed-off' : ''}`}>
           {item.item}
           <div className="icons">
-            <RiCloseCircleLine />
-            <IoMdCheckmarkCircleOutline />
+            <RiCloseCircleLine onClick={()=> deleteItem(item.id)}/>
+            <IoMdCheckmarkCircleOutline onClick={() => completedItem(item.id)} />
           </div>
         </div>
     ))}

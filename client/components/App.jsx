@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Title from './Title.jsx';
 import Items from './Items.jsx';
-
 // const App = () => {
 //   const [items, setItems] = useState([]);
 

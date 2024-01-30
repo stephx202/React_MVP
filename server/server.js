@@ -34,6 +34,21 @@ app.get("/api/ToDoList", (req, res) => {
   });
 });
 
+//DELETE REQUEST BY ID
+app.delete("/api/ToDoList/:id",(req, res)=>{
+  const itemID = req.params.id;
+  console.log("Received DELETE request for item with ID:", itemID)
+  pool.query("DELETE FROM ToDoList WHERE id=$1", [itemID])
+  .then((result)=>{
+    res.status(204).send("item deleted");
+  })
+  .catch((error)=>{
+    console.error(error);
+    res.status(404).send("unable to delete the requested item. check server side")
+  })
+
+})
+
 
 app.listen(8000, () => {
   console.log(`Listening on port 8000`);
