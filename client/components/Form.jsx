@@ -21,7 +21,7 @@ const Form = ({onAddItem})=>{
         })
         .then((newItemData)=>{
             onAddItem(newItemData);
-            //cleater the input box after new item being submitted.
+            //clearsthe input box after new item being submitted.
             setNewItem('');
         })
         .catch((error)=>{
