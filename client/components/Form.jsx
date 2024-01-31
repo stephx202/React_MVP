@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-
+//{onAddItem} is the same thing as props.onAddItem
 const Form = ({onAddItem})=>{
     const [newItem, setNewItem]= useState('');
 
@@ -21,7 +21,7 @@ const Form = ({onAddItem})=>{
         })
         .then((newItemData)=>{
             onAddItem(newItemData);
-            //clearsthe input box after new item being submitted.
+            //clears the input box after new item being submitted;p41
             setNewItem('');
         })
         .catch((error)=>{

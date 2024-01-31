@@ -15,7 +15,7 @@ const pool = new Pool({
 });
 
 app.use(express.json());
-//ANOTHER WAY TO MAKE A GET REQUEST
+//ANOTHER WAY TO MAKE A GET ROUTE
 //need to add /api/ToDoList to view on postman
 // app.get("/api/ToDoList", async (req, res) => {
 //   try {
@@ -26,7 +26,7 @@ app.use(express.json());
 //       res.status(500).send("Internal Server Error");
 //     }
 // });
-//THIS WORKS
+//GET REQUEST
 app.get("/api/ToDoList", (req, res) => {
   pool.query("SELECT * FROM ToDoList").then((result) => {
     res.send(result.rows);
@@ -34,7 +34,7 @@ app.get("/api/ToDoList", (req, res) => {
   });
 });
 
-//DELETE REQUEST BY ID
+//DELETE ROUTE BY ID
 app.delete("/api/ToDoList/:id",(req, res)=>{
   const itemID = req.params.id;
   console.log("Received DELETE request for item with ID:", itemID)
@@ -50,7 +50,7 @@ app.delete("/api/ToDoList/:id",(req, res)=>{
 })
 
 
-//POST REQUEST  
+//POST ROUTE  
 app.post("/api/ToDoList", (req, res) => {
   const {item} = req.body;
   pool.query("INSERT INTO ToDoList (item) VALUES ($1) RETURNING *", [item])

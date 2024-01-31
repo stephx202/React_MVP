@@ -5,12 +5,9 @@ import Form from "./Form.jsx";
 function App(){
   const[items, setItems]= useState([])
 
-
+  //take in newItem and update items using spread operator to add
   const handleNewItem = (newItem) => {
-    setItems((prevItems) => [
-      ...prevItems,
-      newItem
-    ]);
+    setItems((prevItems) => [...prevItems, newItem]);
   };
   
   return(

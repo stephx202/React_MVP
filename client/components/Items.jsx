@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { RiCloseCircleLine} from "react-icons/ri";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
+//declares functional component.
 const Items = () => {
   const [items, setItems] = useState([]);
-//GET DATA
+//GET DATA when the component mounts
   useEffect(() => {
     fetch("/api/ToDoList")
       .then((res) => res.json())
@@ -19,8 +20,8 @@ const Items = () => {
       });
   }, []); //add an empty array so that this effect runs only once.
 
+  //function to toggle the crossedOff property when an item is clicked
   const completedItem = (itemId) => { 
-    // Toggle the crossedOff property when an item is clicked
     setItems((prevItems) =>
       prevItems.map((item) =>
         item.id === itemId ? { ...item, crossedOff: !item.crossedOff } : item
@@ -30,16 +31,12 @@ const Items = () => {
 
   //DELETE DATA
   const deleteItem=(itemId)=>{
-
-
-
-
     fetch(`/api/ToDoList/${itemId}`,{
       method:'DELETE',
     })
     .then((res)=>{
       if (res.ok) {
-        //update the state by using .filter to take out deleted items.
+        //update the state by using .filter to take out deleted item
         setItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
         console.log(`Deleted item ${itemId}`);
       } else {
