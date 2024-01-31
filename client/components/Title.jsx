@@ -2,7 +2,7 @@ import React from 'react'
 function Title(){
     return(
       <div className='Title'>
-        This is my Title
+        To-Do List
       </div>
     )
   }

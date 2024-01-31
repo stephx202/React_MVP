@@ -32,13 +32,13 @@ const Form = ({onAddItem})=>{
 
     return (
         <form className="form" onSubmit={handleSubmit}>
-            <input
+            <input id="input"
                 type="text"
                 value={newItem}
                 onChange={(e)=> setNewItem(e.target.value)}
                 placeholder="Add new item"
             />
-            <button type="submit">Add</button>
+            <button id="button" type="submit">Add</button>
         </form>
     );
 };

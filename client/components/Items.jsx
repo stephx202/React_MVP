@@ -30,6 +30,10 @@ const Items = () => {
 
   //DELETE DATA
   const deleteItem=(itemId)=>{
+
+
+
+
     fetch(`/api/ToDoList/${itemId}`,{
       method:'DELETE',
     })
